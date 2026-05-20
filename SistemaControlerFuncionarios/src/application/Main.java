@@ -64,7 +64,36 @@ public class Main {
 					System.out.println("Funcionário não encontrado.");
 				}
 				break;
+			case 4:
+				System.out.println("Digite o ID do funcionário que deseja atualizar");
+				int idAtualizar = scanner.nextInt();
+				scanner.nextLine();
+				Funcionario funcionarioAtualizar = service.buscarPorId(idAtualizar);
 				
+				if (funcionarioAtualizar != null) {
+					System.out.println("Novo nome: ");
+					String novoNome = scanner.nextLine();
+					
+					System.out.println("NovoCargo: ");
+					String novoCargo = scanner.nextLine();
+					
+					System.out.println("Novo salário base: ");
+					double novoSalario = scanner.nextDouble();
+					
+					boolean atualizado = service.atualizar(idAtualizar, novoNome, novoCargo, novoSalario);
+					if (atualizado) {
+						System.out.println("Funcionário atualizado com sucesso!");
+			
+					} else {
+						System.out.println("Funcionário não encontrado.");
+					}
+					break;
+					
+					
+					
+				}
+				
+				break;
 			case 0:
 				System.out.println("Sistema encerrado.");
 				break;
