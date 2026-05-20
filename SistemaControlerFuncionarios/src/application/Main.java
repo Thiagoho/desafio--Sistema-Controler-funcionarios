@@ -51,8 +51,23 @@ public class Main {
 				System.out.println(f);
 			}
 			break;
+			
+			case 3:
+				System.out.println("Digite o ID do funcionário: ");
+				int idBusca = scanner.nextInt();
+				Funcionario funcionarioEncontrado = service.buscarPorId(idBusca);
+				System.out.println(funcionarioEncontrado);
+				
+				if (funcionarioEncontrado != null) {
+					System.out.println("\t Funcionário encontrado:");
+				} else {
+					System.out.println("Funcionário não encontrado.");
+				}
+				break;
+				
 			case 0:
 				System.out.println("Sistema encerrado.");
+				break;
 			default:
 				System.out.println("Opção Inválida.");
 			}
