@@ -1,0 +1,23 @@
+	Configuração do Mysql com Docker
+Instalação e Configuração do Ambiente Docker
+Durante o desenvolvimento do projeto foi utilizado o Docker para criar um ambiente isolado contendo o banco de dados Mysql, evitando instalações
+diretos no sistema operacional e facilitando a execução do projeto em diferentes máquinas.
+---
+	Objetivo do uso do Docker no projeto
+° Isolar o ambiente do banco de dados
+° Facilirar a configuração do projeto
+° Evitar conflitos de instalação 
+° Permitir maior portabilidade do sistema
+° Simular ambientes utilizados no mercado de desenvolvimento.
+---
+	Criação do Container MYsQL
+Para utilizar o banco de dados Mysql no projeto, foi criado um container Docker utilizando a imagem oficial do Mysql 8.
+Comando utilizado:
+   PowerShell
+docker run --name mysql-estudo `
+-e MYSQL_ROOT_PASSWORD=123456 `
+-e MYSQL_DATABASE=empresa_db `
+-p 3307:3306 `
+-d mysql:8
+---
+
