@@ -54,9 +54,13 @@ public class Funcionario {
 	}
 
 	// Método toString()
-	@Override
-	public String toString() {
-		return "Funcionario {" + "id" + id + ", nome'" + nome + '\'' + ", cargo='" + '\'' + ", salarioBase="
-				+ salarioBase + '}';
-	}
+    @Override
+    public String toString() {
+        return "Funcionario {" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", salarioBase=" + salarioBase +
+                '}';
+    }
 }

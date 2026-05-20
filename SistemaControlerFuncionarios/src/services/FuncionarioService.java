@@ -14,7 +14,7 @@ public class FuncionarioService {
 	}
 
 	public List<Funcionario> listarTodos() {
-		return null;
+		return funcionarios;
 	}
 
 	public Funcionario buscarPorId(int id) {
