@@ -23,7 +23,7 @@ public class FuncionarioService {
 				return funcionario;
 			}
 		}
-		return null;
+	return null;
 	}
 
 	public boolean atualizar(int id, String nome, String cargo, double salarioBase) {

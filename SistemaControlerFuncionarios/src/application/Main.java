@@ -56,7 +56,6 @@ public class Main {
 				System.out.println("Digite o ID do funcionário: ");
 				int idBusca = scanner.nextInt();
 				Funcionario funcionarioEncontrado = service.buscarPorId(idBusca);
-				System.out.println(funcionarioEncontrado);
 				
 				if (funcionarioEncontrado != null) {
 					System.out.println("\t Funcionário encontrado:");
@@ -64,6 +63,7 @@ public class Main {
 					System.out.println("Funcionário não encontrado.");
 				}
 				break;
+				
 			case 4:
 				System.out.println("Digite o ID do funcionário que deseja atualizar");
 				int idAtualizar = scanner.nextInt();
@@ -86,14 +86,22 @@ public class Main {
 			
 					} else {
 						System.out.println("Funcionário não encontrado.");
+			
 					}
 					break;
-					
-					
-					
 				}
-				
+			case 5:
+				System.out.println("Digite o ID do funcionário que deseja excluir:");
+				int idExcluir = scanner.nextInt();
+				boolean excluido = service.excluir(idExcluir);
+				if (excluido) {
+					System.out.println("Funcionario excluído com sucesso!");
+					
+				} else {
+					System.out.println("Funcionario não encontrado.");
+				}
 				break;
+			
 			case 0:
 				System.out.println("Sistema encerrado.");
 				break;
