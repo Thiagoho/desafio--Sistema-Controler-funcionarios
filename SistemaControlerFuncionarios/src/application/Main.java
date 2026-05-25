@@ -29,6 +29,7 @@ public class Main {
 			scanner.nextLine();
 			switch (opcao) {
             case 1:
+            	
                 System.out.print("ID: ");
                 int id = scanner.nextInt();
                 scanner.nextLine();
@@ -47,6 +48,13 @@ public class Main {
                 break;
                 
 			case 2:
+				if (service.listarTodos().isEmpty()) {
+					System.out.println("\t Nenhum funcionário cadastrado.");
+				} else {
+					System.out.println("\t ==== LISTA DE FUNCIONÁRIOS ====");
+				}
+					
+				
 			for (Funcionario f : service.listarTodos()) {
 				System.out.println(f);
 			}
@@ -58,9 +66,9 @@ public class Main {
 				Funcionario funcionarioEncontrado = service.buscarPorId(idBusca);
 				
 				if (funcionarioEncontrado != null) {
-					System.out.println("\t Funcionário encontrado:");
+					System.out.println("\t >> Funcionário encontrado.");
 				} else {
-					System.out.println("Funcionário não encontrado.");
+					System.out.println("\t >> Funcionário não encontrado.");
 				}
 				break;
 				
@@ -71,39 +79,56 @@ public class Main {
 				Funcionario funcionarioAtualizar = service.buscarPorId(idAtualizar);
 				
 				if (funcionarioAtualizar != null) {
-					System.out.println("Novo nome: ");
+					System.out.println("Nome atual: " + funcionarioAtualizar.getNome());
+					System.out.println("Novo nome ou ENTER para manter: ");
 					String novoNome = scanner.nextLine();
+					if (novoNome.isBlank()) {
+						novoNome = funcionarioAtualizar.getNome();
+					}
 					
-					System.out.println("NovoCargo: ");
+					System.out.println("Cargo atual: " + funcionarioAtualizar.getCargo());
+					System.out.println("Novo Cargo ou ENTER para manter: ");
 					String novoCargo = scanner.nextLine();
+					if (novoCargo.isBlank()) {
+						novoCargo = funcionarioAtualizar.getCargo();
+					}
 					
-					System.out.println("Novo salário base: ");
-					double novoSalario = scanner.nextDouble();
+					System.out.println("Salário atual: " + funcionarioAtualizar.getSalarioBase());
+					System.out.println("Novo salário ou ENTER para manter: ");
+					String salarioDigitado = scanner.nextLine();
+					
+					double novoSalario;
+					
+					if (salarioDigitado.isBlank()) {
+						novoSalario = funcionarioAtualizar.getSalarioBase();
+						
+					} else {
+						novoSalario = Double.parseDouble(salarioDigitado);
+					}
 					
 					boolean atualizado = service.atualizar(idAtualizar, novoNome, novoCargo, novoSalario);
-					if (atualizado) {
-						System.out.println("Funcionário atualizado com sucesso!");
-			
-					} else {
-						System.out.println("Funcionário não encontrado.");
-			
-					}
-					break;
+				if (atualizado) {
+					System.out.println("\t >> Funcionário atualizando com sucesso!");
 				}
+				} else {
+					System.out.println("\t >> Funcionário não encontrado.");
+				}
+						
+				break;
 			case 5:
 				System.out.println("Digite o ID do funcionário que deseja excluir:");
 				int idExcluir = scanner.nextInt();
 				boolean excluido = service.excluir(idExcluir);
 				if (excluido) {
-					System.out.println("Funcionario excluído com sucesso!");
+					System.out.println("\t >> Funcionario excluído com sucesso!");
 					
 				} else {
-					System.out.println("Funcionario não encontrado.");
+					System.out.println("\t >>Funcionario não encontrado.");
 				}
 				break;
 			
 			case 0:
-				System.out.println("Sistema encerrado.");
+				System.out.println("\t >>>Sistema encerrado.<<<");
 				break;
 			default:
 				System.out.println("Opção Inválida.");

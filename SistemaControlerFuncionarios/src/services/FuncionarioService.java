@@ -40,7 +40,9 @@ public class FuncionarioService {
 	public boolean excluir(int id) {
 		Funcionario funcionario = buscarPorId(id);
 		if (funcionario != null) {
-			funcionarios.remove(funcionarios);
+			System.out.println("Removendo: " + funcionario);
+			funcionarios.remove(funcionario);
+			System.out.println("Total restante: " + funcionarios.size());
 			return true;
 		}
 		return false;
